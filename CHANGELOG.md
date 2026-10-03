@@ -5,7 +5,6 @@ changes are in the [pgmorbac changelog](https://github.com/crudylabs/pgmorbac/bl
 
 ## [1.0.0] - 2026-10-03
 
-### Added
-- The install and upgrade scripts of the signed pgmorbac 1.0.0 release, verified
-  against the pinned release key when the package is built.
-- `extensionSql()`, `upgradeScripts()`, `version`, `sqlDir` and `controlFile`.
+Published from the extension repository before this one existed; the same SQL
+and API (`extensionSql()`, `upgradeScripts()`, `version`, `sqlDir`,
+`controlFile`). Releases after 1.0.0 are published from here.
