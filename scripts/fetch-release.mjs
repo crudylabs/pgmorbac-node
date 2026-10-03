@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // prepack: fills sql/ from the signed pgmorbac release whose version matches
-// package.json. The release comes from the crudy/pgmorbac Gitea releases, or
+// package.json. The release comes from the crudylabs/pgmorbac GitHub releases, or
 // from a local directory of release files (PGMORBAC_DIST_DIR, the dist/ that
 // the extension's build-dist.mjs writes). Either way it must verify against the
 // pinned release-key.pub.pem before anything is written.
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { extractSql, releaseFiles, verifyRelease } from './release.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const RELEASES = 'https://git.villains.fr/crudy/pgmorbac/releases/download';
+const RELEASES = 'https://github.com/crudylabs/pgmorbac/releases/download';
 
 const { version } = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const files = releaseFiles(version);

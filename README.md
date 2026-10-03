@@ -31,7 +31,7 @@ adds permission checks, the RLS session context and management routes.
 
 The package version is the extension version. Building the package downloads
 that version's release from
-[crudy/pgmorbac](https://git.villains.fr/crudy/pgmorbac/releases), checks the
+[crudylabs/pgmorbac](https://github.com/crudylabs/pgmorbac/releases), checks the
 Ed25519-signed manifest against the pinned `release-key.pub.pem` and the zip
 against the manifest's sha256, and only then extracts the SQL. The extension
 source lives in [pgmorbac](https://github.com/crudylabs/pgmorbac); this repository
