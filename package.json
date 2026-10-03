@@ -1,0 +1,58 @@
+{
+  "name": "@crudy/pgmorbac",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Multi-OrBAC for PostgreSQL: the pgmorbac extension SQL from each signed release, for Node.js projects and migration runners",
+  "keywords": [
+    "pgmorbac",
+    "morbac",
+    "orbac",
+    "rbac",
+    "authorization",
+    "access-control",
+    "postgresql",
+    "postgresql-extension",
+    "row-level-security",
+    "multi-tenant"
+  ],
+  "author": "Marc Villain",
+  "license": "MIT",
+  "homepage": "https://pgmorbac.crudy.fr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crudylabs/pgmorbac-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crudylabs/pgmorbac-node/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "sql",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "prepack": "node scripts/fetch-release.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "fflate": "^0.8.2",
+    "jose": "^5"
+  }
+}
