@@ -1,0 +1,44 @@
+# On every push to master: test, then publish @crudy/pgmorbac to Verdaccio,
+# the same way the crudy monorepo publishes its packages. A version the
+# registry already holds is skipped, so a push without a version bump passes.
+# prepack downloads the signed GitHub release of the same version and verifies
+# it, so the release must exist before the version bump is pushed.
+#
+# Host networking reaches the real Verdaccio on 127.0.0.1:4873; the repo must be
+# marked Trusted in Drone.
+#
+# Required Drone secret:
+#   npm_auth   base64 of "<user>:<password>" for Verdaccio (publish rights)
+kind: pipeline
+type: docker
+name: publish
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+network_mode: host
+
+steps:
+  - name: test
+    image: node:24
+    commands:
+      - npm ci --no-audit --no-fund
+      - npm test
+
+  - name: npm-publish
+    image: node:24
+    environment:
+      NPM_AUTH:
+        from_secret: npm_auth
+    commands:
+      - echo "//localhost:4873/:_auth=$NPM_AUTH" > ~/.npmrc
+      - VERSION=$(node -p "require('./package.json').version")
+      - |
+        if npm view "@crudy/pgmorbac@$VERSION" version --registry http://localhost:4873 >/dev/null 2>&1; then
+          echo "@crudy/pgmorbac@$VERSION already published"
+        else
+          npm publish --registry http://localhost:4873
+        fi
