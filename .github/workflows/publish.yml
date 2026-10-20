@@ -37,7 +37,7 @@ jobs:
           tar -xJf "$file" -C "$RUNNER_TEMP/node" --strip-components=1
           rm "$file"
           echo "$RUNNER_TEMP/node/bin" >> "$GITHUB_PATH"
-      - run: npm ci --no-audit --no-fund
+      - run: npm install --no-audit --no-fund
       - run: npm test
       - name: Publish
         run: |
