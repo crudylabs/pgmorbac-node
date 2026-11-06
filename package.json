@@ -1,6 +1,6 @@
 {
   "name": "@crudy/pgmorbac",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Multi-OrBAC for PostgreSQL: the pgmorbac extension SQL from each signed release, for Node.js projects and migration runners",
   "keywords": [
